@@ -1,0 +1,18 @@
+# Tareas
+
+tarea<- read.csv (file.choose())
+pib<-ts(tarea,frequency = 1,start=1961,end = 1979)
+plot(window(pib,start=1961),ylab="Crecimiento", xlab = "Año",main = "PIB MEXICO DE 1961-1979")
+seasonplot(pib, s=1, year.labels = TRUE, main = "PIB MEXICO",ylab = "Año", col=rainbow(20),year.labels.left = TRUE,pch=15)
+
+pib1<-window(pib, start = 1961,end = 1965)
+plot(pib1, main="PIB MEXICO 1961-1965",xlab = "Año",ylab = "Crecimiento")
+
+pib2<-window(pib, start = 1966,end = 1970)
+plot(pib2, main="PIB MEXICO 1966-1970",xlab = "Año",ylab = "Crecimiento")
+
+pib3<-window(pib, start = 1971,end = 1975)
+plot(pib3, main="PIB MEXICO 1971-1975",xlab = "Año",ylab = "Crecimiento")
+
+pib4<-window(pib, start = 1976,end = 1979)
+plot(pib4, main="PIB MEXICO 1976-1979",xlab = "Año",ylab = "Creciemiento") 
