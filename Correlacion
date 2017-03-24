@@ -1,0 +1,24 @@
+# COVARIANZA ENTRE 2 VARIABLES
+archivo<-read.csv(file.choose())
+emp<-ts(archivo[1:20,1], frequency = 4,start = 2010)
+pob<-ts(archivo[1:20,2], frequency = 4,start = 2010)
+pob
+summary(emp)
+summary(pob)
+emp1<-emp-15.2
+emp1
+pob1<-pob-61.3
+pob1
+op<-emp1*pob1
+usq<-0
+op1<-ts(op, frequency = 4,start = 2010)
+for(i in 1:20) {
+  usq[i] <- op1[i]+op1[i+1]
+  print(usq[i])
+}
+op
+cov<-126.2/19
+empds<-sd (emp)
+pobds<-sd(pob)
+cor<-cov/(empds*pobds)
+cor
