@@ -1,0 +1,26 @@
+des <- read.csv (file.choose())
+desoc<-ts(des,frequency=4,start=(2005),end=(2015))
+first<-window(desoc,start=c(2005,1),end=c(2009,4))
+#<-window(seriemultiple,start=c(2007,1),end=c(2011,12))
+install.packages("forecast")
+require (forecast)
+fi1<-meanf(first,h=4)
+fi2<-naive(first,h=4)
+fi3<-snaive(first,h=4)
+fi4<-rwf(first,h=4,drift=TRUE)
+x11()
+plot(first, main="Pronostico de desocupacion trimestral")
+lines(fi1$mean,col="pink") ##mean se refiere al promedio es la media le pides que te grafique la media
+lines(fi2$mean,col="blue")
+lines(fi3$mean,col="green")
+lines(fi4$mean,col="red")
+legend("topleft",lty=1,col=c("pink","blue","green","red"),legend = c("Media","Ingenuo","Ingenuo Estacional","Deriva"))
+second<-window(desoc,start=c(2010,1),end=c(2014,4))
+se1<-meanf(second,h=20)
+se2<-naive(second,h=20)
+se3<-snaive(second,h=20)
+se4<-rwf(second,h=20,drift=TRUE)
+pron<-second-se1
+pron<-second-se2
+pron<-second-se3
+pron<-second-se4
