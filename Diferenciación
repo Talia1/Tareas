@@ -1,0 +1,7 @@
+ica<-read.csv(file.choose())
+icats<-ts(ica,start=c(2016),frequency = 252)
+acf(icats)
+icats
+
+diferencia<-retraso(icats)
+View(diferencia)
